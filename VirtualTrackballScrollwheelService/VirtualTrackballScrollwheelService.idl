@@ -1,0 +1,18 @@
+// VirtualTrackballScrollwheelService.idl : IDL source for VirtualTrackballScrollwheelService
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (VirtualTrackballScrollwheelService.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(121F1750-031B-427F-8E00-AD36442F9053),
+	version(1.0),
+]
+library VirtualTrackballScrollwheelServiceLib
+{
+	importlib("stdole2.tlb");
+};
+
