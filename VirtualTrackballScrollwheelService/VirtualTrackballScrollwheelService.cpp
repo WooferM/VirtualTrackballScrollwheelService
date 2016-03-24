@@ -70,34 +70,9 @@ LRESULT CALLBACK LowLevelMouseProc(int nCode, WPARAM wParam, LPARAM lParam) {
 			preventCallNextHookEx = FALSE;
 			g_state = L_DOWN;
 			g_origin = p->pt;
-		} /*else if (wParam == WM_RBUTTONDOWN) { // NORMAL->R_DOWN: remember position
-			preventCallNextHookEx = TRUE;
-			g_state = R_DOWN;
-			g_origin = p->pt;
-		}*/
+		}
 		break;
 	case DOWN:
-		/*if (wParam == WM_XBUTTONUP) { // DOWN->NORMAL: middle button click
-			preventCallNextHookEx = TRUE;
-			g_state = NORMAL;
-			INPUT input[2];
-			input[0].type = INPUT_MOUSE;
-			input[0].mi.dx = p->pt.x;
-			input[0].mi.dy = p->pt.y;
-			input[0].mi.mouseData = (DWORD)0x0;
-			input[0].mi.dwFlags = MOUSEEVENTF_MIDDLEDOWN; // middle button down
-			input[0].mi.time = (DWORD)0x0;
-			input[0].mi.dwExtraInfo = (ULONG_PTR)NULL;
-			input[1].type = INPUT_MOUSE;
-			input[1].mi.dx = p->pt.x;
-			input[1].mi.dy = p->pt.y;
-			input[1].mi.mouseData = (DWORD)0x0;
-			input[1].mi.dwFlags = MOUSEEVENTF_MIDDLEUP; // middle button up
-			input[1].mi.time = (DWORD)0x0;
-			input[1].mi.dwExtraInfo = (ULONG_PTR)NULL;
-			SendInput(2, input, sizeof(INPUT));
-		}
-		else */ 
 		if (wParam == WM_MOUSEMOVE) { // DOWN->SCROLL
 			preventCallNextHookEx = TRUE;
 			g_state = SCROLL;
@@ -142,17 +117,6 @@ LRESULT CALLBACK LowLevelMouseProc(int nCode, WPARAM wParam, LPARAM lParam) {
 		}
 
 		break;
-	/*case R_DOWN:
-		if (wParam == WM_LBUTTONDOWN) { // R_DOWN->LR_DOWN: remember position
-			preventCallNextHookEx = FALSE;
-			g_state = LR_DOWN;
-			g_origin = p->pt;
-		} else if (wParam == WM_RBUTTONUP) { // R_DOWN ->NORMAL
-			preventCallNextHookEx = FALSE;
-			g_state = NORMAL;
-		} 
-		break;
-		*/
 	case LR_DOWN:
 		if (wParam == WM_MOUSEMOVE) { // LR_DOWN->LR_SCROLL
 			preventCallNextHookEx = TRUE;
@@ -222,6 +186,7 @@ extern "C" int WINAPI _tWinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstan
 		}
 	}
 
-	UnhookWindowsHookEx(g_Hook); // remove hook	return _AtlModule.WinMain(nShowCmd);
+	UnhookWindowsHookEx(g_Hook); // remove hook	
+	return _AtlModule.WinMain(nShowCmd);
 }
 
