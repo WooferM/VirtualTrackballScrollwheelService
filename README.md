@@ -13,7 +13,7 @@ Based on https://github.com/Seelge/TrackballScroll
 This software has been tested with a *Logitech Marge Mouse* (tm) (2 button) and *Logitech Trackman Marble* (tm) in *Microsoft Windows 7*
 
 ###### Download the latest release
-
+https://github.com/WooferM/VirtualTrackballScrollwheelService/releases/latest
 
 ###### Run the program
 - Execute `VirtualTrackballScrollwheelService.exe`, no installation is necessary.
